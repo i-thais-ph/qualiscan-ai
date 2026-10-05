@@ -1,0 +1,34 @@
+name: CI QualiScan AI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  calidad:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar pruebas y medir cobertura
+        run: pytest --cov=qualiscan --cov-report=term-missing --cov-fail-under=70 -v
+
+      - name: Analizar el propio codigo con QualiScan (sin IA)
+        run: python main.py qualiscan --sin-ia
+
+      - name: Guardar el reporte como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-calidad
+          path: reportes/
