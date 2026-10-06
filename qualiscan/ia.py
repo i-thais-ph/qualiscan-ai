@@ -14,7 +14,7 @@ URL_BASE = "https://generativelanguage.googleapis.com/v1beta"
 # Si el primero falla (modelo no disponible o limite), prueba el siguiente.
 MODELOS_POR_DEFECTO = ["gemini-flash-latest", "gemini-flash-lite-latest", "gemini-2.5-flash"]
 MAX_FUNCIONES = 3        # funciones mas complejas que se envian a la IA
-MAX_CARACTERES = 3500    # limite de codigo por funcion enviada
+MAX_CARACTERES = 6000    # limite de codigo por funcion enviada
 
 
 def cargar_env(ruta: str = ".env") -> None:
@@ -72,7 +72,10 @@ def listar_modelos() -> list:
 
 def _fragmento(base: Path, f: dict) -> str:
     lineas = (base / f["archivo"]).read_text(encoding="utf-8", errors="ignore").splitlines()
-    return "\n".join(lineas[f["linea"] - 1: f["linea"] - 1 + f["longitud"]])[:MAX_CARACTERES]
+    texto = "\n".join(lineas[f["linea"] - 1: f["linea"] - 1 + f["longitud"]])
+    if len(texto) > MAX_CARACTERES:
+        texto = texto[:MAX_CARACTERES] + "\n# ... [FRAGMENTO TRUNCADO]"
+    return texto
 
 
 def _construir_prompt(base: Path, funciones: list) -> str:
@@ -83,6 +86,10 @@ def _construir_prompt(base: Path, funciones: list) -> str:
     return (
         "Eres un revisor de codigo Python senior. Revisa las siguientes funciones y "
         "detecta defectos reales, riesgos de fiabilidad y problemas de mantenibilidad. "
+        "IMPORTANTE: solo ves fragmentos aislados; no incluyen los imports ni el resto "
+        "del archivo y pueden estar truncados. No reportes errores de sintaxis, nombres "
+        "no definidos ni imports faltantes por esa causa, y reporta solo problemas de los "
+        "que tengas certeza (si dudas, no lo incluyas). "
         "Responde SOLO con un arreglo JSON (sin texto adicional) donde cada elemento "
         'tenga las claves: "archivo", "funcion", "severidad" (alta|media|baja), '
         '"problema" y "sugerencia". Escribe en espanol, maximo 2 oraciones por campo.\n\n'

@@ -27,6 +27,9 @@ jobs:
       - name: Analizar el propio codigo con QualiScan (sin IA)
         run: python main.py qualiscan --sin-ia
 
+      - name: Calcular metricas de proceso, proyecto y estimaciones
+        run: python metricas.py
+
       - name: Guardar el reporte como artefacto
         uses: actions/upload-artifact@v4
         with:

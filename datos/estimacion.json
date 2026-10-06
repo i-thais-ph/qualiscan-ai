@@ -1,0 +1,23 @@
+{
+  "_nota": "DATOS DE EJEMPLO: reemplaza los valores por los de tu proyecto.",
+  "expertos": {
+    "nombres": ["Alumno", "IA (Gemini)", "Companero de clase"],
+    "horas": {"metrics": [6, 8, 7], "report": [3, 4, 3], "ia": [5, 7, 6], "main": [2, 3, 2]}
+  },
+  "analoga": {
+    "proyecto_referencia": "Proyecto previo de la materia (ejemplo)",
+    "horas": 22,
+    "loc": 300
+  },
+  "tres_puntos": {
+    "metrics": {"O": 4, "M": 6, "P": 12},
+    "report": {"O": 2, "M": 3, "P": 6},
+    "ia": {"O": 4, "M": 6, "P": 10},
+    "main": {"O": 1.5, "M": 2, "P": 4}
+  },
+  "puntos_funcion": {
+    "EI": 2, "EO": 3, "EQ": 1, "ILF": 1, "EIF": 2,
+    "gsc": [1, 0, 2, 2, 1, 0, 1, 2, 1, 1, 0, 1, 1, 1],
+    "horas_por_pf": 0.5
+  }
+}

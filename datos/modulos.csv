@@ -1,0 +1,6 @@
+# DATOS DE EJEMPLO. Reemplaza horas_reales por las que realmente dedicaste a cada modulo.
+modulo,sprint,puntos_historia,horas_estimadas,horas_reales,loc
+metrics,1,8,6,7.5,118
+report,1,5,3,3.5,53
+ia,2,8,5,6.5,113
+main,2,3,2,2.5,48
