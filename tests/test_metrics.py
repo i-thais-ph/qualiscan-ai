@@ -92,3 +92,23 @@ def test_listar_archivos_ignora_venv(tmp_path: Path):
 def test_tiene_pruebas(tmp_path: Path):
     assert tiene_pruebas([tmp_path / "test_algo.py"]) is True
     assert tiene_pruebas([tmp_path / "app.py"]) is False
+
+
+def test_detecta_funcion_demasiado_compleja_R06():
+    # 12 decisiones -> complejidad 13 (> 10)
+    codigo = "def f(x):\n" + "".join(f"    if x == {i}:\n        return {i}\n" for i in range(12)) \
+        + "    return 0\n"
+    hall = detectar_hallazgos("x.py", codigo, ast.parse(codigo))
+    r06 = [h for h in hall if h.regla == "R06"]
+    assert len(r06) == 1 and r06[0].severidad == "media"
+
+
+def test_detecta_funcion_muy_larga_R05():
+    codigo = "def f():\n" + "    x = 1\n" * 55
+    reglas = {h.regla for h in detectar_hallazgos("x.py", codigo, ast.parse(codigo))}
+    assert "R05" in reglas
+
+
+def test_funcion_anidada_no_suma_a_la_externa():
+    codigo = "def externa():\n    def interna(x):\n        if x:\n            return 1\n    return 0\n"
+    assert complejidad_ciclomatica(_funcion(codigo)) == 1
