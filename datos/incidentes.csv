@@ -1,13 +1,8 @@
-# DATOS DE EJEMPLO basados en el desarrollo de QualiScan AI. Reemplaza las fechas por tus tiempos reales
-# (usa git log, la hora de los commits y las ejecuciones de GitHub Actions).
+# Registro de incidentes de QualiScan AI (tiempos reconstruidos con el historial de Git y las capturas)
 # severidad: alta | media | baja      fase_deteccion: revision | pruebas | produccion
 id,modulo,severidad,descripcion,fase_deteccion,inicio,detectado,resuelto
-1,main,alta,ModuleNotFoundError por carpeta mal nombrada,pruebas,2026-10-05 12:20,2026-10-05 12:24,2026-10-05 12:40
-2,metrics,media,Funcion detectar_hallazgos con complejidad 21 (limite 10),revision,2026-10-05 11:30,2026-10-05 12:45,2026-10-06 10:00
-3,report,media,Funcion analizar_proyecto con complejidad 17 (limite 10),revision,2026-10-05 11:50,2026-10-05 12:45,2026-10-06 10:30
-4,ia,alta,Fallo total del programa si la IA no responde (sin respaldo),revision,2026-10-05 14:00,2026-10-05 14:20,2026-10-05 15:10
-5,ia,alta,Posible subida de la clave de API a GitHub (.env sin ignorar),revision,2026-10-05 15:00,2026-10-05 15:05,2026-10-05 15:10
-6,ia,alta,Respuesta de IA con formato invalido rompe el programa,pruebas,2026-10-05 15:10,2026-10-05 16:30,2026-10-05 16:50
-7,report,alta,Division entre cero en proyecto sin codigo,pruebas,2026-10-05 12:45,2026-10-05 16:35,2026-10-05 16:40
-8,metrics,media,Reglas R05 y R06 sin pruebas automatizadas (hueco de cobertura),pruebas,2026-10-05 16:00,2026-10-06 09:00,2026-10-06 10:00
-9,ia,alta,Modelo principal de IA no disponible en uso real,produccion,2026-10-05 17:00,2026-10-05 17:10,2026-10-05 17:30
+1,main,alta,ModuleNotFoundError por carpeta y archivo mal nombrados,pruebas,2026-10-05 09:45,2026-10-05 09:51,2026-10-05 09:59
+2,main,media,Proyecto sin pruebas automatizadas,revision,2026-10-05 09:59,2026-10-05 10:05,2026-10-05 10:42
+3,metrics,media,Reglas R05 y R06 sin pruebas (hueco de cobertura),pruebas,2026-10-05 10:42,2026-10-05 13:48,2026-10-05 22:18
+4,ia,media,IA con falsos positivos por fragmentos truncados y sin contexto,pruebas,2026-10-05 10:28,2026-10-06 12:45,2026-10-06 12:58
+5,metrics,media,Codigo de metricas.py pegado por error en metrics.py,pruebas,2026-10-08 13:55,2026-10-08 14:00,2026-10-08 14:05

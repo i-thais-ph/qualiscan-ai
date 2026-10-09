@@ -1,19 +1,19 @@
 {
-  "_nota": "DATOS DE EJEMPLO: reemplaza los valores por los de tu proyecto.",
+  "_nota": "Estimaciones hechas al final del proyecto con la informacion disponible.",
   "expertos": {
-    "nombres": ["Alumno", "IA (Gemini)", "Companero de clase"],
-    "horas": {"metrics": [6, 8, 7], "report": [3, 4, 3], "ia": [5, 7, 6], "main": [2, 3, 2]}
+    "nombres": ["Alumno", "IA (Gemini)"],
+    "horas": {"metrics": [6, 6], "report": [2, 2], "ia": [5, 5], "main": [3, 3]}
   },
   "analoga": {
-    "proyecto_referencia": "Proyecto previo de la materia (ejemplo)",
-    "horas": 22,
-    "loc": 300
+    "proyecto_referencia": "Proyecto de Docker Compose de la misma materia",
+    "horas": 3,
+    "loc": 50
   },
   "tres_puntos": {
-    "metrics": {"O": 4, "M": 6, "P": 12},
-    "report": {"O": 2, "M": 3, "P": 6},
-    "ia": {"O": 4, "M": 6, "P": 10},
-    "main": {"O": 1.5, "M": 2, "P": 4}
+    "metrics": {"O": 4.2, "M": 6, "P": 9},
+    "report": {"O": 1.4, "M": 2, "P": 3},
+    "ia": {"O": 3.5, "M": 5, "P": 7.5},
+    "main": {"O": 2.1, "M": 3, "P": 4.5}
   },
   "puntos_funcion": {
     "EI": 2, "EO": 3, "EQ": 1, "ILF": 1, "EIF": 2,
